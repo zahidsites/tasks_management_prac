@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task form</title>
+</head>
+<body>
+        <div class="form">
+                {% if messages %}
+                        {% for message in messages  %}
+                                <p class="" style="color: green;">{{message}}</p>
+                        {% endfor %}
+                {% endif %}
+                <form action="" method="post">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        {{form2.as_p}}
+                        <button type="submit">Submit</button>
+                </form>
+
+                
+            
+        </div>
+</body>
+</html>

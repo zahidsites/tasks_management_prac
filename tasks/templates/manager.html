@@ -1,0 +1,48 @@
+    {% include "base.html" %}
+    <!-- Grid Area -->
+     {% block tasks %}
+       
+   
+  <!-- Next Area -->
+  <div class="data-area container max-w-[1300px] mx-auto divide-y divide-gray-200 p-4 bg-white-500 shadow-md rounded-md
+  mt-4">
+        <div class="row grid md:grid-cols-4 grid-cols-1 py-4">
+            <div class="text-md text-gray-500">Task Title</div>
+            <div class="text-md text-gray-500">Priority</div>
+            <div class="text-md text-gray-500">Team</div>
+            <div class="text-md text-gray-500">Credit At</div>
+        </div>
+{% for task in tasks  %}
+  
+        <div class="row grid md:grid-cols-4 grid-cols-1 py-4">
+            <div class="text-xl text-gray-500 flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                <div class="text-sm">{{task.title}}<span><a style="color: rgb(247, 247, 247); border-radius: 4px; background: purple;
+                padding: 2px 5px; margin-left:10px" href="{% url 'update-task' task.id %}"> Edit</a></span>
+                <form action="{% url 'delete-task' task.id %}" method="post">
+                    {% csrf_token %}
+                    <button style="background-color: red;" type="submit">Delete</button>
+                </form>    
+          
+            </div>
+                
+            </div>
+            <div class="flex items-center">
+                <span class="bg-blue-100 text-sm px-4 py-1 font-semibold rounded-full text-blue-500">{{task.details.get_priority_display}}</span>
+            </div>
+            <div class="flex justify-start items-center -space-x-2">
+                {% for emp in task.employee.all  %}
+                    <div class="bg-blue-600 text-sm w-8 h-8 font-semibold rounded-full text-white 
+                border border-white-500 flex justify-center items-center">{{emp.name}}</div>
+                {% endfor %}
+                
+               
+            </div>
+            <div class="text-sm text-gray-500">{{task.created_at|timesince}}</div>
+        </div>
+
+{% endfor %}
+
+  </div>
+{% endblock tasks %}
+  
