@@ -8,8 +8,7 @@
 <body>
      <form action="{% url 'signin' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="uname">
-        <input type="password" name="password1">
+        {{form.as_p}}
         <button type="submit">Log In</button>
     </form>
     <p><a href="{% url 'sign-up' %}">Register</a></p>
