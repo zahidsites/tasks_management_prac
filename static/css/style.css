@@ -1,0 +1,29 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.form {
+    width: 40%;
+    margin: 30px auto;
+}
+input {
+    width: 100%;
+    outline: none;
+    margin-top: 5px;
+    padding: 4px;
+    border: 1px solid #cfcfcf;
+}
+input:focus{
+    border: 1px solid green;
+}
+.form button {
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin: 15px 0;
+    background-color: brown;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form #id_username, #id_first_name, #id_last_name, #id_email, #id_password1, #id_confirm_pass {
+    margin-bottom: 15px;
+}

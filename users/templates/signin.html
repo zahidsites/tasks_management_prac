@@ -1,16 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-     <form action="{% url 'signin' %}" method="post">
+    <header class="py-3 bg-red-400">
+        <div class="nav-bar flex justify-around">
+            <div class="logo">Event</div>
+            <div class="menu">
+                <ul class="flex justify-between gap-4 text-white">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'signin' %}">Log In</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </header>
+     <form action="{% url 'signin' %}" method="post" class="form">
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Log In</button>
+         <p style="color: #727171;">If you don't have account please <a href="{% url 'sign-up' %}" style="color: green; text-decoration: underline;">Register</a></p>
     </form>
-    <p><a href="{% url 'sign-up' %}">Register</a></p>
+   
 </body>
 </html>

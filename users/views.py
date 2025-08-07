@@ -46,6 +46,6 @@ def user_activate(request,user_id,token):
             user.save()
             return redirect('signin')
         else:
-            return HttpResponse("User Id Invalid")
+            return HttpResponse(request,"User Id Invalid")
     except User.DoesNotExist:
-        return HttpResponse("User Not found")
+        return HttpResponse(request,"User Not found")

@@ -1,20 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
 </head>
-<body>
-   <h1> welcome  to home</h1>
-   {% if user.is_authenticated %}
-  
-       <form action="{% url 'logout' %}" method="post">
-             {% csrf_token %}
-             <button type="submit">Log Out</button>
-       </form>
-    {%else%}
-        <p>Dahsboard</p>
-   {% endif %}
+<body class="text-xl">
+    {% if request.user.is_authenticated %}
+       <header class="py-3 bg-red-400">
+        <div class="nav-bar flex justify-around">
+            <div class="logo">Event</div>
+            <div class="menu">
+                <ul class="flex justify-between gap-4 text-white">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><form action="{% url 'signin' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Log Out</button>
+                    </form></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+   
+{%else%}
+ <header class="py-3 bg-red-400">
+        <div class="nav-bar flex justify-around">
+            <div class="logo">Event</div>
+            <div class="menu">
+                <ul class="flex justify-between gap-4 text-white">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'signin' %}">Log In</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    {% endif %}
+   <h1 class="text-center text-2xl mt-4"> welcome  to home</h1>
+   
 </body>
 </html>
